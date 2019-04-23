@@ -1,28 +1,22 @@
+""" Qt Demo """
+# -*- coding: utf-8 -*-
 import sys
-import PyQt5
-from PyQt5 import QtCore
-from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QApplication, QMainWindow
+from ui.Ui_main_window import Ui_MainWindow
 
+if __name__ == '__main__':
 
-class SigSlot(QtWidgets.QWidget):
-    def __init__(self, parent=None):
-        QtWidgets.QWidget.__init__(self)
-        self.setWindowTitle('XXOO')
-        lcd = QtWidgets.QLCDNumber(self)
-        slider = QtWidgets.QSlider(QtCore.Qt.Horizontal, self)
-        slider.setRange(0, 1000)
+    # 创建Application实例
+    APP = QApplication(sys.argv)
 
-        vbox = QtWidgets.QVBoxLayout()
-        vbox.addWidget(lcd)
-        vbox.addWidget(slider)
+    # 创建一个窗口
+    MainWindow = QMainWindow()
+    MainUi = Ui_MainWindow()
+    MainUi.setupUi(MainWindow)
 
-        self.setLayout(vbox)
+    MainWindow.move(300, 300)
+    MainWindow.setWindowTitle("第一个PyQt程序")
 
-        slider.valueChanged.connect(lcd.display)
-        self.resize(350, 250)
-
-
-app = QtWidgets.QApplication(sys.argv)
-qb = SigSlot()
-qb.show()
-sys.exit(app.exec_())
+    # 显示窗口
+    MainWindow.show()
+    sys.exit(APP.exec())
