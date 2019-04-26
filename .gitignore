@@ -4,3 +4,4 @@
 /dist
 __pycache__
 /src/ui/Ui_main_window.py
+/.idea
